@@ -22,10 +22,12 @@ class TicTacToe
   end
 
   def move(location, player = 'X')
-    location = location.to_i
+
+ location = location.to_i
     @board[location - 1] = player
     @board
-  end
+
+end
 
   def position_taken?(position)
           if @board[position] == " " || @board[position] == "" || @board[position] == nil
@@ -43,6 +45,15 @@ class TicTacToe
       return false
     end
   end
+def turn_count
+    moves = 0
+    @board.each do |pos|
+      if pos == 'X' || pos == 'O'
+        moves += 1
+      end
+    end
+    return moves
+  end
 
   def turn
     puts "Please enter 1-9:"
@@ -55,15 +66,7 @@ class TicTacToe
     display_board
   end
 
-  def turn_count
-    moves = 0
-    @board.each do |pos|
-      if pos == 'X' || pos == 'O'
-        moves += 1
-      end
-    end
-    return moves
-  end
+  
 
   def current_player
     turn_count.even? ? 'X' : 'O'
